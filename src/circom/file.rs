@@ -4,14 +4,14 @@
 use crate::circom::circuit::Constraint;
 use byteorder::{LittleEndian, ReadBytesExt};
 use ff::PrimeField;
-use pasta_curves::group::Group;
+use secpq_curves::group::Group;
 use std::{
     collections::HashMap,
     io::{Error, ErrorKind, Read, Result, Seek, SeekFrom},
 };
 
-type G1 = pasta_curves::pallas::Point;
-type G2 = pasta_curves::vesta::Point;
+type G1 = secpq_curves::secq256k1::Point;
+type G2 = secpq_curves::secp256k1::Point;
 
 // R1CSFile's header
 #[derive(Debug, Default)]

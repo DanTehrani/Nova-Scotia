@@ -11,9 +11,9 @@ use std::str;
 use crate::circom::circuit::{CircuitJson, R1CS};
 use crate::circom::file::{from_reader, read_field};
 use ff::PrimeField;
-use pasta_curves::group::Group;
+use secpq_curves::group::Group;
 
-type G1 = pasta_curves::pallas::Point;
+type G1 = secpq_curves::secq256k1::Point;
 
 pub fn generate_witness_from_bin<Fr: PrimeField>(
     witness_bin: &Path,
@@ -98,7 +98,7 @@ pub fn load_witness_from_array<Fr: PrimeField>(buffer: Vec<u8>) -> Result<Vec<Fr
 }
 
 /// load witness from u8 array by a reader
-fn load_witness_from_bin_reader<Fr: PrimeField, R: Read>(
+pub fn load_witness_from_bin_reader<Fr: PrimeField, R: Read>(
     mut reader: R,
 ) -> Result<Vec<Fr>, anyhow::Error> {
     let mut wtns_header = [0u8; 4];
