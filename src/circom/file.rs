@@ -4,12 +4,14 @@
 use crate::circom::circuit::Constraint;
 use byteorder::{LittleEndian, ReadBytesExt};
 use ff::PrimeField;
+use secpq_curves::group::Group;
 use std::{
     collections::HashMap,
     io::{Error, ErrorKind, Read, Result, Seek, SeekFrom},
 };
-use secq256k1::affine::Group;
-type G1 = secq256k1::AffinePoint;
+
+type G1 = secpq_curves::secq256k1::Point;
+type G2 = secpq_curves::secp256k1::Point;
 
 // R1CSFile's header
 #[derive(Debug, Default)]
