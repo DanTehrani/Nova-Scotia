@@ -11,9 +11,8 @@ use std::str;
 use crate::circom::circuit::{CircuitJson, R1CS};
 use crate::circom::file::{from_reader, read_field};
 use ff::PrimeField;
-use secpq_curves::group::Group;
-
-type G1 = secpq_curves::secq256k1::Point;
+use secq256k1::affine::Group;
+type G1 = secq256k1::AffinePoint;
 
 pub fn generate_witness_from_bin<Fr: PrimeField>(
     witness_bin: &Path,
